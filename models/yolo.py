@@ -53,8 +53,13 @@ class YOLOSegmenter(SegmentationModel):
                 barrier_id = k
         assert trash_class_id is not None
 
+        # If nothing is predicted, return zeros
+        if len(prediction.boxes.cls) == 0:
+            return torch.zeros(self.original_image_shape).unsqueeze(0) > 0
+
         # Select only trash masks
         predicted_classes = prediction.boxes.cls
+        masks = masks
         trash_masks = masks[predicted_classes == trash_class_id].cpu()
 
         ## Remove out-system predictions if a barrier is predicted

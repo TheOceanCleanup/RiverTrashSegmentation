@@ -10,6 +10,8 @@ def main(args):
 
     # Identify split based on train size
     split_id = f'split_{args.train_size}_{100-args.train_size}'
+    if args.train_size < 10:
+        split_id = f'split_0{args.train_size}_{100-args.train_size}'
     
     # Create split folder based on selected locations used. Remove duplicates.
     locations_used = list(set([int(x) for x in args.locations.split(' ')]))
@@ -97,7 +99,7 @@ if __name__ == "__main__":
     # General settings
     parser.add_argument('--split_folder', help='Path to folder containing the splits', default='./data/annotations')
     parser.add_argument('--train_size', type=int, default=80, help='Determine size of split to train on.')
-    parser.add_argument('--experiment_name', required=True, help='Name of experiment. Should have experiment id and will be used for extensive experiment id.')
+    parser.add_argument('--experiment_name', default='', help='Helps identify experiment')
     parser.add_argument('--locations', help='Ids of locations to train on, seperate by a space', type=str, default='1 2 3 4 5 6')
 
     # Training Hyperparameters

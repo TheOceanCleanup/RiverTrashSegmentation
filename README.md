@@ -4,7 +4,7 @@
 Required packages are found in `env.yaml`, the repo was written using 3.10.13 on Windows 11.
 
 ### Downloading dataset
-Download the dataset from [here] Note: dataset is still under review [here](https://data.4tu.nl/), the correct link to download RIFTSeg will be inserted once the dataset is published. 
+Download the dataset from [here](https://data.4tu.nl/datasets/90d13261-b0fe-444a-b408-c5a63db3d887/1). 
 
 Unpack the files into a `data` folder. This should have the following structure:
 ```
